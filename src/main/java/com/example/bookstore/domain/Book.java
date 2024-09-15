@@ -48,6 +48,10 @@ public class Book {
     public void setPrice(float price) {
         this.price = price;
     }
+
+    public Book(){
+        
+    }
     
     public Book(String title, String author, int publicationYear, int isbn, float price) {
         this.title = title;

@@ -22,7 +22,6 @@ public class BookstoreApplication {
 			bookRepository.save(new Book("Sinuhe Egyptialainen", "Mika Waltari", 1945, 876543, 19.99f));
 			bookRepository.save(new Book("Puhdistus", "Sofi Oksanen", 2008, 765432, 12.99f));
 
-            
             System.out.println("Test data added successfully");
         };
 	}

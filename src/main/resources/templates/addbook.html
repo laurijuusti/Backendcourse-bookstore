@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a book</title>
+
+    <style>
+        .form-group {
+            margin-bottom: 15px; /* Adds spacing between form elements */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px; /* Adds space between label and input */
+        }
+
+        input[type="text"] {
+            width: 13%; /* Makes input fields fill the container width */
+            padding: 3px; /* Adds padding inside the input field */
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px; /* Adds padding inside the submit button */
+            display: block;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <form th:object="${book}" th:action="@{save}" action="#" method="post">
+        <label for="Title">Title</label>
+        <input type="text" id= "Title" th:field="*{title}" />
+
+        <label for="Author">Author</label>
+        <input type="text" id="Author" th:field="*{author}" />
+
+        <label for="Pubyear">Publication Year</label>
+        <input type="text" id="Pubyear" th:field="*{publicationYear}" />
+
+        <label for="ISBN">ISBN</label>
+        <input type="text" id="ISBN" th:field="*{isbn}" />
+
+        <label for="Price">Price</label>
+        <input type="text" id="Price" th:field="*{price}" />
+       
+        <input type="submit" value="Save"></input>
+    </form>
+
+    <a href="/booklist">Link to list of books</a>
+</body>
+</html>

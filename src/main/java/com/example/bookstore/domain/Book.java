@@ -11,7 +11,7 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 
-    private Long id;
+    public Long id;
     public String title;
     public String author;
     public int publicationYear;
@@ -50,7 +50,7 @@ public class Book {
     }
 
     public Book(){
-        
+
     }
     
     public Book(String title, String author, int publicationYear, int isbn, float price) {

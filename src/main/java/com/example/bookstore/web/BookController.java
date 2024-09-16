@@ -37,8 +37,36 @@ public class BookController {
          return "redirect:booklist"; //booklist
          }
    @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
-    public String delete(@PathVariable Long id) {
-        bookRepository.deleteById(id);
-        return "redirect:/booklist";
+         public String delete(@PathVariable Long id) {
+         bookRepository.deleteById(id);
+         return "redirect:/booklist";
          }
+         @RequestMapping(value = "/editbook/{id}", method = RequestMethod.GET)
+         public String showEditForm(@PathVariable("id") Long id, Model model) {
+             Book book = bookRepository.findById(id)
+                                       .orElseThrow(() -> new IllegalArgumentException("Invalid book Id:" + id));
+             model.addAttribute("book", book);
+             return "editbook"; // Make sure this matches the template name
+         }
+         
+         @RequestMapping(value = "/editbook/{id}", method = RequestMethod.POST)
+         public String editbook(@PathVariable("id") Long id, Book editedBook) {
+             Book existingBook = bookRepository.findById(id)
+                                               .orElseThrow(() -> new IllegalArgumentException("Invalid book Id:" + id));
+             
+             existingBook.setTitle(editedBook.getTitle());
+             existingBook.setAuthor(editedBook.getAuthor());
+             existingBook.setPublicationYear(editedBook.getPublicationYear());
+             existingBook.setIsbn(editedBook.getIsbn());
+             existingBook.setPrice(editedBook.getPrice());
+             
+             bookRepository.save(existingBook);
+             return "redirect:/booklist"; // Redirect to the book list after saving
+         }
+         
+
+
+
+
+
 }

@@ -17,7 +17,8 @@
                 <th>Publication Year</th>
                 <th>ISBN</th>
                 <th>Price</th>
-                <th>Actions</th>
+                <th>Delete</th>
+                <th>Edit</th>
             </tr>
         </thead>
         <tbody>
@@ -30,6 +31,11 @@
                 <td>
                     <form th:action="@{/delete/{id}(id=${book.id})}" method="post" style="display:inline;">
                         <input type="submit" value="Delete" />
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{/editbook/{id}(id=${book.id})}" method="get" style="display:inline;">
+                        <input type="submit" value="Edit" />
                     </form>
                 </td>
             </tr>

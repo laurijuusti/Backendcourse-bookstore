@@ -1,5 +1,7 @@
 package com.example.bookstore.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.GeneratedValue;
@@ -20,6 +22,7 @@ public class Book {
     public float price;
 
     @ManyToOne
+    @JsonIgnore
     private Category category;
 
     public String getTitle() {

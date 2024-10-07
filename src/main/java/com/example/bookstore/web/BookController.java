@@ -63,7 +63,7 @@ public class BookController {
             Book book = bookRepository.findById(id)
                         .orElseThrow(() -> new IllegalArgumentException("Invalid book Id:" + id));
             model.addAttribute("book", book);
-            return "editbook"; // Make sure this matches the template name
+            return "editbook";
       }
 
       @RequestMapping(value = "/editbook/{id}", method = RequestMethod.POST)
@@ -78,7 +78,7 @@ public class BookController {
             existingBook.setPrice(editedBook.getPrice());
 
             bookRepository.save(existingBook);
-            return "redirect:/booklist"; // Redirect to the book list after saving
+            return "redirect:/booklist";
       }
 
       // REST CONTROLLER BELOW

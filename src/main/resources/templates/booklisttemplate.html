@@ -15,6 +15,8 @@
 </head>
 <body>
     <h1>Book Listing</h1>
+
+
     <p>Here's all the books added to the database.</p>
 
     <table>
@@ -38,8 +40,9 @@
                 <td th:text="${book.isbn}"></td>
                 <td th:text="${book.price}"></td>
                 <td th:text="${book.category.name}"></td>
-                <td>
-                    <form th:action="@{/delete/{id}(id=${book.id})}" method="post" style="display:inline;">
+
+                <td sec:authorize="hasRole('ADMIN')">
+                    <form th:action="@{/delete/{id}(id=${book.id})}" method="post">
                         <input type="submit" value="Delete" />
                     </form>
                 </td>
@@ -52,5 +55,6 @@
         </tbody>
     </table>
     <a href="/addbook">Add a new book here</a>
+    <a href="/logout">Logout</a>
 </body>
 </html>

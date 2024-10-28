@@ -25,6 +25,14 @@ public class Book {
     @JsonIgnore
     private Category category;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setid(Long id) {
+        this.id = id;
+    }
+
     public String getTitle() {
         return title;
     }

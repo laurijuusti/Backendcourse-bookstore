@@ -17,15 +17,14 @@ public class BookstoreRepositoryTest {
     private BookRepository bookRepository;
 
     @Autowired
-    private CategoryRepository categoryRepository; // Assuming you have a CategoryRepository
+    private CategoryRepository categoryRepository;
 
     @Test
     public void testCreateBook() {
-        // Create a category for the book
-        Category category = new Category("Fiction");
-        categoryRepository.save(category); // Save the category first
 
-        // Create a book with the saved category
+        Category category = new Category("Fiction");
+        categoryRepository.save(category);
+
         Book book = new Book("Test Title", "Test Author", 2024, 1234567890, 19.99f, category);
         Book savedBook = bookRepository.save(book);
         assertNotNull(savedBook.getId());
@@ -33,11 +32,10 @@ public class BookstoreRepositoryTest {
 
     @Test
     public void testDeleteBook() {
-        // Create a category for the book
+
         Category category = new Category("Non-fiction");
         categoryRepository.save(category);
 
-        // Create and save a book
         Book book = new Book("Delete Title", "Author", 2024, 987654321, 29.99f, category);
         Book savedBook = bookRepository.save(book);
         bookRepository.deleteById(savedBook.getId());
@@ -46,11 +44,10 @@ public class BookstoreRepositoryTest {
 
     @Test
     public void testFindByTitle() {
-        // Create a category for the book
+
         Category category = new Category("Science Fiction");
         categoryRepository.save(category);
 
-        // Save a book with the category
         Book book = new Book("Search Title", "Author", 2024, 1122334455, 15.99f, category);
         bookRepository.save(book);
 

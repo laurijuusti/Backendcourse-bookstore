@@ -44,5 +44,4 @@ public class SmokeTest {
                 .andExpect(status().isOk());
     }
 
-    // Add similar tests for other controllers and endpoints as needed
 }
